@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&family=Baloo+Bhaina+2:wght@400;600&display=swap" rel="stylesheet">
+
+<title>Testimonial Slider</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  }
+
+body{
+  font-family:'Mukta', sans-serif;
+  background:#e6eff1;
+  padding:60px 20px;
+  overflow: hidden;
+}
+
+/* ===== Container ===== */
+.testimonial-wrapper{
+  max-width:1200px;
+  margin:auto;
+  overflow:hidden;
+}
+
+/* ===== Slider ===== */
+.testimonial-track{
+  display:flex;
+  gap:24px;
+  transition:transform .5s ease;
+}
+
+/* ===== Card ===== */
+.testimonial-card{
+  background:#15616A;
+  border-radius:12px;
+  padding:28px 28px 26px;
+  min-width:calc(33.333% - 16px);
+  color:#fff;
+  position:relative;
+}
+
+/* ===== Stars ===== */
+.stars{
+  color:#fff;
+  font-size:17px;
+  margin-bottom:14px;
+}
+
+/* ===== Review text ===== */
+.review{
+  font-family:'Mukta', sans-serif;
+  font-weight:300;
+  font-size:16px;
+  line-height:25px;
+  letter-spacing:-0.21px;
+  margin-bottom:22px;
+}
+
+/* ===== Author ===== */
+.author{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* Profile image */
+.author img{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* Name */
+.author-name{
+  font-family:'Baloo Bhaina 2', cursive;
+  font-size:22px;
+  line-height:35px;
+  letter-spacing:-1px;
+}
+
+/* Location */
+.author-location{
+  font-family:'Mukta', sans-serif;
+  font-size:16px;
+  line-height:25px;
+  letter-spacing:-0.21px;
+  margin-top:-8px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Arrows ===== */
+.slider-controls{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:32px;
+}
+
+.arrow{
+  width:44px;
+  height:44px;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  border:1px solid #cfd8dc;
+  background:transparent;
+  transition:.25s;
+    border: 1px solid #15616A;
+    color: #15616A;
+        font-size:18px;
+
+}
+.arrow:hover,
+.arrow.arrow.next:hover{
+    background-color: #15616A;
+    color: #fff;
+}
+.arrow.next{
+  background:#fff;
+  color:#15616A;
+  border:none;
+  border: 1px solid #15616A;
+    background:transparent;
+    font-size:18px;
+}
+
+.arrow:hover{
+  transform:translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width:992px){
+  .testimonial-card{
+    min-width:calc(50% - 12px);
+  }
+}
+
+@media (max-width:600px){
+  .testimonial-card{
+    min-width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="testimonial-wrapper">
+
+  <div class="testimonial-track" id="track">
+
+    <!-- Card 1 -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="review">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+
+      <div class="author">
+        <img src="https://static.wixstatic.com/media/76225d_7daf82655e1446bcbf5f21d652b76a92~mv2.png" />
+        <div>
+          <div class="author-name">Ani smith</div>
+          <div class="author-location">New york, USA</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="review">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+
+      <div class="author">
+        <img src="https://static.wixstatic.com/media/76225d_f510dc04d8094d78a50f1477d4730869~mv2.png" />
+        <div>
+          <div class="author-name">Ani smith</div>
+          <div class="author-location">New york, USA</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="review">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+
+      <div class="author">
+        <img src="https://static.wixstatic.com/media/76225d_41b56b2640644f26ad940239387b7418~mv2.png" />
+        <div>
+          <div class="author-name">Ani smith</div>
+          <div class="author-location">New york, USA</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="review">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+
+      <div class="author">
+        <img src="https://static.wixstatic.com/media/76225d_7daf82655e1446bcbf5f21d652b76a92~mv2.png" />
+        <div>
+          <div class="author-name">Ani smith</div>
+          <div class="author-location">New york, USA</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <div class="slider-controls">
+    <div class="arrow prev" onclick="moveSlide(-1)">&#10094;</div>
+    <div class="arrow next" onclick="moveSlide(1)">&#10095;</div>
+  </div>
+
+</div>
+
+<script>
+let index = 0;
+
+function moveSlide(direction){
+  const track = document.getElementById("track");
+  const cards = document.querySelectorAll(".testimonial-card");
+
+  const cardWidth = cards[0].offsetWidth + 24;
+  index += direction;
+
+  const maxIndex = cards.length - getVisibleCards();
+
+  if(index < 0) index = 0;
+  if(index > maxIndex) index = maxIndex;
+
+  track.style.transform = `translateX(-${index * cardWidth}px)`;
+}
+
+function getVisibleCards(){
+  if(window.innerWidth <= 600) return 1;
+  if(window.innerWidth <= 992) return 2;
+  return 3;
+}
+</script>
+
+</body>
+</html>

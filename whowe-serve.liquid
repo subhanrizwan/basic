@@ -1,0 +1,92 @@
+<div class="whatwe-serve" style="background-image: url({{ section.settings.serve_img | image_url }});">
+    <div class="container">
+        <div class="row">
+            <div class="col left-col">
+                {% for block in section.blocks %}
+                <div class="serve_list">
+                    <div class="icon">
+                        <img src="{{ block.settings.icon | image_url }}" alt="serve image" width="60" height="60">
+                    </div>
+                    <div class="serve_content">
+                        <p>{{ block.settings.content }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col right-col">
+                <h4>{{ section.settings.sub_heading }}</h4>
+                <h2>{{ section.settings.whatwe_heading }}</h2>
+                <p>{{ section.settings.whatwe_description }}</p>
+                <div class="whatwe_btn">
+                    <a href="{{section.settings.btn_link}}" class="btn">{{ section.settings.btn_text }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+"name": "custom what we serve",
+"settings": [
+{
+"type": "text",
+"id": "sub_heading",
+"label": "Sub Heading",
+"default": "WHO WE SERVE"
+},
+{
+"type": "text",
+"id": "whatwe_heading",
+"label": "What We Do Heading",
+"default": "Built for Industry Professionals & End-users."
+},
+{
+"type": "textarea",
+"id": "whatwe_description",
+"label": "What We Do Description",
+"default": "OCS provides expert guidance from concept to execution."
+},
+{
+"type": "text",
+"id": "btn_text",
+"label": "Button",
+"default": "Shop Curated Products"
+},
+{
+"type": "url",
+"id": "btn_link",
+"label": "Button"
+},
+{
+"type": "image_picker",
+"id": "serve_img",
+"label": "Who We Serve Image"
+}
+],
+"blocks" : [
+{
+"type": "serve_item",
+"name": "Serve Item",
+"settings": [
+{
+"type": "image_picker",
+"id": "icon",
+"label": "Serve Icon"
+},
+{
+"type": "textarea",
+"id": "content",
+"label": "Serve Item Content",
+"default": "Designers and specifiers needing confident product solutions"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Custom What We Serve"
+}
+]
+}
+{% endschema %}

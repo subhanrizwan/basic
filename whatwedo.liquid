@@ -1,0 +1,71 @@
+    <div class="whatwe-do-section">
+            <div class="container">
+            <div class="row">
+                <div class="col left-col">
+                    <h4>{{section.settings.sub_heading}}</h4>
+                    <h2>{{section.settings.whatwe_heading}}</h2>
+                    <p>{{section.settings.whatwe_description}}</p>
+                     <ul class="whatwe-features">
+                    {{ section.settings.features_text }}
+                </ul>
+
+                    <div class="whatwe_btn">
+                        <a href="{{section.settings.btn_link}}" class="btn">{{section.settings.btn_text}}</a>
+                    </div>
+                </div>
+                <div class="col right-col">
+            <img src="{{section.settings.whatwe_img | image_url}}" alt="My image's alt text" width="200" height="200">
+            </div>
+            </div>
+        </div>
+
+        {% schema  %}
+        {
+            "name" : "custom what we do section",
+            "settings" : [
+                {
+                    "type" : "text",
+                    "id" : "sub_heading",
+                    "label":"Sub Heading",
+                    "default": "WHAT WE DO"
+                },
+                {
+                    "type" : "text",
+                    "id" : "whatwe_heading",
+                    "label":"What We Do Heading",
+                    "default": "Connecting Design, Products & Performance"
+                },
+                {
+                    "type" : "textarea",
+                    "id" : "whatwe_description",
+                    "label":"What We Do Description",
+                    "default": "OCS operates at the intersection of design inspiration, product expertise, and field execution. Whether you’re specifying, selling, or installing outdoor products, we help simplify the process and improve outcomes."
+                },
+                {
+                    "type" : "text",
+                    "id" : "btn_text",
+                    "label": "Button",
+                    "default" : "Specification & Product Support"
+                },
+                {
+                    "type": "url",
+                    "id": "btn_link",
+                    "label": "Button",
+                },
+                {
+                    "type" : "image_picker",
+                    "id" : "whatwe_img",
+                    "label":"What We Do Image",
+                },
+                {
+    "type": "richtext",
+    "id": "features_text",
+    "label": "Features List"
+    }
+            ],
+            "presets": [{
+                "name" : "Custom What We Do"
+            }]
+        }
+
+        {% endschema %}

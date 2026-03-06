@@ -1,0 +1,77 @@
+    <div class="support-service-section"
+    style="background-image:url({{ section.settings.bg_img | image_url }});">
+    <div class="container">
+        <div class="row">
+        <div class="col left-col">
+            <img src="{{section.settings.left_img | image_url}}" alt="My image's alt text" width="100%" height="100%">
+        </div>
+        <div class="col right-col">
+            <h2>{{ section.settings.support_heading }}</h2>
+            <p>{{ section.settings.support_desc}}</p>
+            <div class="support-service-btn">
+            <a href="{{section.settings.primary_link}}" class="btn1">{{ section.settings.primary_text }}</a>
+            <a href="{{section.settings.secondary_link}}" class="btn2">{{ section.settings.secondary_text }}</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    {% schema %}
+    {
+    "name": "custom support service section",
+    "settings": [
+        {
+        "type": "image_picker",
+        "id": "bg_img",
+        "label": "Support Image"
+        },
+        {
+        "type": "image_picker",
+        "id": "left_img",
+        "label": "Support Image"
+        },
+        {
+        "type": "text",
+        "id": "support_heading",
+        "label": "Support Heading",
+        "default": "Connecting Design, Products & Performance"
+        },
+        {
+        "type": "textarea",
+        "id": "support_desc",
+        "label": "Support Description",
+        "default": "Connecting Design, Products & Performance"
+        },
+        {
+        "type": "text",
+        "id": "primary_text",
+        "label": "Primary Button Text",
+        "default": "Specification & Product Support"
+        },
+        {
+        "type": "url",
+        "id": "primary_link",
+        "label": "Primary Button Link"
+        },
+        {
+        "type": "text",
+        "id": "secondary_text",
+        "label": "Secondary Button Text",
+        "default": "Field Support"
+        },
+        {
+        "type": "url",
+        "id": "secondary_link",
+        "label": "Secondary Button Link"
+        }
+        
+    ],
+    "presets": [
+        {
+        "name": "Support Banner",
+        "category": "Custom Support Service"
+        }
+    ]
+    }
+    {% endschema %}

@@ -1,0 +1,82 @@
+    <section class="our-approach-section"
+        style="background-image:url({{ section.settings.bg_img | image_url }});">
+            <div class="container">
+            <div class="row">
+                <div class="col left-col">
+                    <h4>{{section.settings.sub_heading}}</h4>
+                    <h2>{{section.settings.main_heading}}</h2>
+                </div>
+                <div class="col right-col">
+                    <div class="content">
+                        <h6>{{section.settings.approach_title}}</h6>
+                        <ul class="approach_list">
+                            {{ section.settings.approach_text }}
+                        </ul>
+                        <p>{{section.settings.approach_content}}</p>
+                    </div>
+                    <div class="approach_btn">
+                            <a href="{{section.settings.btn_link}}" class="approach_btn">{{section.settings.btn_text}}</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        {% schema %}
+        {
+            "name": "custom approach section",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "bg_img",
+                    "label": "Background Image"
+                },
+                {
+                    "type": "text",
+                    "id": "sub_heading",
+                    "label": "Sub Heading",
+                    "default": "Our Approach"
+                },
+                {
+                    "type": "text",
+                    "id": "main_heading",
+                    "label": "Main Heading",
+                    "default": "Designed for How the Industry Actually Works"
+                },
+                {
+                    "type": "text",
+                    "id": "approach_title",
+                    "label": "Approach Title",
+                    "default": "We believe the best results happen when:"
+                },
+                {
+                    "type": "richtext",
+                    "id": "approach_text",
+                    "label": "Approach List (Rich Text)",
+                },
+                {
+                    "type": "textarea",
+                    "id": "approach_content",
+                    "label": "Approach Content",
+                    "default": "OCS brings structure, clarity, and support to every stage of the process. We help you find the right products, connect with the right people, and get the right results."
+                },
+                {
+                    "type": "text",
+                    "id": "btn_text",
+                    "label": "Button Text",
+                    "default": "Contact Us"
+                },
+                {
+                    "type": "url",
+                    "id": "btn_link",
+                    "label": "Button Link"
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Custom Approach"
+                }
+            ]
+        }
+
+        {% endschema %}
