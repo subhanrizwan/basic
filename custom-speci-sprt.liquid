@@ -1,0 +1,140 @@
+<section class="specification-support-section"
+ style="background-image:url({{ section.settings.bg_img | image_url }});">
+  <div class="container">
+    <div class="row">
+      <div class="col left-col">
+        <img src="{{section.settings.left_img | image_url}}" alt="My image's alt text" width="515px" height="100%">
+      </div>
+      <div class="col right-col">
+        <h2>{{ section.settings.support_heading }}</h2>
+        <p>{{ section.settings.support_desc}}</p>
+        <div class="support-service-btn">
+          <a href="{{section.settings.primary_link}}" class="btn1">{{ section.settings.primary_text }}</a>
+          <a href="{{section.settings.secondary_link}}" class="btn2">{{ section.settings.secondary_text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "custom specification support",
+  "settings": [
+       {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Bg Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_img",
+      "label": "Left Image"
+    },
+    {
+      "type": "text",
+      "id": "support_heading",
+      "label": "Support Heading",
+      "default": "Connecting Design, Products & Performance"
+    },
+    {
+      "type": "textarea",
+      "id": "support_desc",
+      "label": "Support Description",
+      "default": "Connecting Design, Products & Performance"
+    },
+    {
+      "type": "text",
+      "id": "primary_text",
+      "label": "Primary Button Text",
+      "default": "Specification & Product Support"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_text",
+      "label": "Secondary Button Text",
+      "default": "Field Support"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary Button Link"
+    }
+    
+  ],
+  "presets": [
+    {
+      "name": "Specification Support Banner",
+      "category": "Custom Specification Support"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+     .specification-support-section {
+            padding: 50px 20px;
+            background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+        }
+        .specification-support-section .row {
+            display: flex;
+            justify-content: center;
+            column-gap: 40px;
+        }
+.specification-support-section .right-col {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: end;
+    padding-bottom: 15px;
+}
+        .specification-support-section .col.left-col, col.right-col{
+            width: 50%;
+        }
+        .specification-support-section .right-col h2 {
+            font-size: 72px;
+            line-height: 80px;
+            font-weight: 400;
+            color:#fff;
+            font-style:normal;
+            letter-spacing:-1%;
+        }
+        .specification-support-section .right-col p {
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 400;
+            color: #fff;    
+        }
+        .support-service-btn {
+    display: flex;
+    column-gap: 20px;
+}
+        .specification-support-section .btn1 {
+            font-size: 16px;
+            line-height: 26px;
+            background: #667F81;
+            padding: 12px 25px;
+            border-radius: 6px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .specification-support-section .btn2 {
+            font-size: 16px;
+            line-height: 26px;
+            background: #fff;
+            padding: 12px 25px;
+            border-radius: 6px;
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+</style>

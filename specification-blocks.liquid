@@ -1,0 +1,171 @@
+<section class="section-wrapper manufacturer-services">
+  <div class="container">
+    <div class="row main-row">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-left">
+        <h2 class="main-heading">{{ section.settings.main_heading }}</h2>
+
+        <div class="blocks-wrapper">
+          {% for block in section.blocks %}
+            <div class="feature-row">
+              <h3 class="feature-title">{{ block.settings.title }}</h3>
+              <p class="feature-text">{{ block.settings.text }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN (IMAGE) -->
+      <div class="col-right">
+       <img src="{{section.settings.left_img | image_url}}" alt="My image's alt text" width="100%" height="100%">
+      </div>
+
+    </div>
+  </div>
+</section>
+<style>
+/* MAIN LAYOUT */
+.manufacturer-services {
+    padding: 40px 20px;
+}
+
+/* base layout for every copy */
+.manufacturer-services .main-row {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+}
+
+/* flip columns in even-numbered instances by targeting the Shopify wrapper */
+[id^="shopify-section"]:nth-of-type(2n) .manufacturer-services .main-row {
+    flex-direction: row-reverse !important;
+}
+ [id^="shopify-section"]:nth-of-type(2n) .manufacturer-services {
+     padding: 40px 20px;
+     padding-top:80px!important;
+}
+
+
+.manufacturer-services .col-left {
+    width: 59%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.manufacturer-services .col-right {
+  width: 41%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* IMAGE EXACT DESIGN */
+.manufacturer-services .col-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; /* exact screenshot rounded look */
+}
+
+/* LEFT HEADING STYLE */
+.main-heading {
+  font-size: 44px;
+  line-height: 54px;
+  letter-spacing: -1%;
+   font-style: normal;
+}
+
+/* BLOCKS WRAPPER */
+.manufacturer-services .col-left .blocks-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* BLOCK STYLE */
+.feature-row{
+    background: #F3EEEB;
+    border-left: 2px solid #8A5B3C;
+    padding: 12px 0px 12px 24px;
+}
+/* BLOCK H3 */
+.feature-title {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 600;
+    margin: 0 0 10px;
+color: #000;
+}
+
+/* BLOCK PARAGRAPH */
+.feature-text {
+    font-size: 16px;
+    line-height: 25px;
+    margin: 0;
+}
+
+/* RESPONSIVE FIX */
+@media (max-width: 991px) {
+  .manufacturer-services .main-row {
+    flex-direction: column;
+  }
+
+  .manufacturer-services .col-left,
+  .manufacturer-services .col-right {
+    width: 100%;
+  }
+
+  .manufacturer-services .col-right img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Specification Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading (H2)",
+      "default": "Manufacturer Services"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_img",
+      "label": "Right Column Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service_block",
+      "name": "Service Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "H3 Title",
+          "default": "Project-Focused Technical Support"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Paragraph Text",
+          "default": "We provide specification development and product integration assistance..."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Specification Services Block",
+      "category": "Custom Specification Support"
+    }
+  ]
+}
+{% endschema %}

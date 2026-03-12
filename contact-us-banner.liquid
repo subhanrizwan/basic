@@ -1,0 +1,35 @@
+    <section class="contact-banner"
+    style="background-image:url({{ section.settings.bg_img | image_url }});">
+    <div class="container">
+        <div class="row">
+        <div class="col">
+            <h1>{{ section.settings.contact-heading }}</h1>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    {% schema %}
+    {
+    "name": "custom contact section",
+    "settings": [
+        {
+        "type": "image_picker",
+        "id": "bg_img",
+        "label": "Support Image"
+        },
+        {
+        "type": "text",
+        "id": "contact-heading",
+        "label": "Contact Heading",
+        "default": "Contact Us"
+    }
+    ],
+    "presets": [
+        {
+        "name": "Contact Banner",
+        "category": "Custom Contact Section"
+        }
+    ]
+    }
+    {% endschema %}

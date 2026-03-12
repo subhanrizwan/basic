@@ -1,27 +1,172 @@
 <section>
-    <div class="support-service-section" >
+    <div class="support-service-blocks">
         <div class="container">
             <div class="row">
-                <div class="col left-col">
-                    <p>{{ section.settings.numbers }}</p>
-                </div>
-                <div class="col right-col">
-                    <div class="row-1">
-                        <h4>{{ section.settings.sub-heading }}</h4>
-                        <h2>{{ section.settings.main-heading}}</h2>
+                {% for block in section.blocks %}
+                <div class="wrapper">
+                    <div class="col counter-col">
+                        <h2>{{ block.settings.count }}</h2>
                     </div>
-                    <div class="row-2">
-                        <div class="col col-left">
-                            <h2>{{ section.settings.support_heading }}</h2>
-                            <p>{{ section.settings.support_desc}}</p>
-                            <div class="support-service-btn">
-                                <a href="{{section.settings.primary_link}}" class="btn1">{{ section.settings.primary_text }}</a>
-                                <a href="{{section.settings.secondary_link}}" class="btn2">{{ section.settings.secondary_text }}</a>
+                    <div class="col content-col">
+                        <div class="row-1 headding-row">
+                            <h4>{{ block.settings.sub-heading }}</h4>
+                            <h2>{{ block.settings.main-heading}}</h2>
+                        </div>
+                        <div class="row-2">
+                            <div class="col col-left">
+                                <ul>
+                                    <li>
+                                        <h3>{{ block.settings.heading1 }}</h3>
+                                        <p>{{ block.settings.desc1}}</p>
+                                    </li>
+                                    <li>
+                                        <h3>{{ block.settings.heading2 }}</h3>
+                                        <p>{{ block.settings.desc2}}</p>
+                                    </li>
+                                    <li>
+                                        <h3>{{ block.settings.heading3 }}</h3>
+                                        <p>{{ block.settings.desc3}}</p>
+                                    </li>
+                                    <li>
+                                        <h3>{{ block.settings.heading4 }}</h3>
+                                        <p>{{ block.settings.desc4}}</p>
+                                    </li>
+                                    <li>
+                                        <h3>{{ block.settings.heading5 }}</h3>
+                                        <p>{{ block.settings.desc5}}</p>
+                                    </li>
+                                    <li>
+                                        <h3>{{ block.settings.heading6 }}</h3>
+                                        <p>{{ block.settings.desc6}}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col col-right">
+                                <img src="{{ block.settings.block_img | image_url }}" alt="right image" width="100%"
+                                    height="100%">
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
+
+{% schema %}
+{
+"name": "Custom Service Blocks",
+"blocks": [
+{
+"type": "support_block",
+"name": "Support Block",
+"settings": [
+{
+"type": "text",
+"id": "count",
+"label": "Count",
+"default": "01"
+},
+{
+"type": "text",
+"id": "sub-heading",
+"label": "Sub Heading",
+"default": "Support services to help contractors stay organized, efficient, and compliant."
+},
+{
+"type": "text",
+"id": "main-heading",
+"label": "Main Heading",
+"default": "Business Operations & Admin Support"
+},
+{
+"type": "text",
+"id": "heading1",
+"label": "Heading 1",
+"default": "Business setup assistance"
+},
+{
+"type": "textarea",
+"id": "desc1",
+"label": "Description 1",
+"default": "LLC formation, license guidance, insurance, and EIN filing"
+},
+{
+"type": "text",
+"id": "heading2",
+"label": "Heading 2",
+"default": "CRM and lead tracking setup"
+},
+{
+"type": "textarea",
+"id": "desc2",
+"label": "Description 2",
+"default": "Organize client, bid, and project information"
+},
+{
+"type": "text",
+"id": "heading3",
+"label": "Heading 3",
+"default": "Scheduling and workflow tools"
+},
+{
+"type": "textarea",
+"id": "desc3",
+"label": "Description 3",
+"default": "Calendar integrations and automated reminders"
+},
+{
+"type": "text",
+"id": "heading4",
+"label": "Heading 4",
+"default": "Branded quote and proposal templates"
+},
+{
+"type": "textarea",
+"id": "desc4",
+"label": "Description 4",
+"default": "Professional, customizable estimating systems"
+},
+{
+"type": "text",
+"id": "heading5",
+"label": "Heading 5",
+"default": "Bookkeeping setup"
+},
+{
+"type": "textarea",
+"id": "desc5",
+"label": "Description 5",
+"default": "QuickBooks or similar platform configuration"
+},
+{
+"type": "text",
+"id": "heading6",
+"label": "Heading 6",
+"default": "Compliance tracking"
+},
+{
+"type": "textarea",
+"id": "desc6",
+"label": "Description 6",
+"default": "Manage permits, certifications, and OSHA documentation"
+},
+{
+"type": "image_picker",
+"id": "block_img",
+"label": "Block Image"
+}
+]
+}
+],
+"presets": [
+{
+"name": " Support Service Blocks",
+"category": "Custom Support Service"
+
+}
+]
+}
+{% endschema %}
+

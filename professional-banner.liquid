@@ -1,0 +1,100 @@
+<section class="professional-section"
+ style="background-image:url({{ section.settings.bg_img | image_url }});">
+  <div class="container">
+    <div class="row">
+      <div class="col left-col">
+        <h1>{{ section.settings.heading1 }}</h1>
+        <h1>{{ section.settings.heading2 }}</h1>
+        <p>{{ section.settings.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "professional support",
+  "settings": [
+       {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Bg Image"
+    },
+    {
+      "type": "text",
+      "id": "heading1",
+      "label": "Heading 1",
+      "default": "Connecting Design, Products & Performance"
+    },
+    {
+      "type": "text",
+      "id": "heading2",
+      "label": "Heading 2",
+      "default": "Professional Support"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Connecting Design, Products & Performance"
+    }
+    
+  ],
+  "presets": [
+    {
+      "name": "professional Banner",
+      "category": "Custom professional Section"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+    
+
+.professional-section {
+  padding: 80px 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.professional-section .left-col {
+  width: 70%; 
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.professional-section .main-heading {
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -1%;
+  font-style: normal;
+  margin: 0;
+}
+
+.professional-section .underline-heading {
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 400;
+  color: #93A5A6;
+  letter-spacing: -1%;
+  font-style: normal;
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.professional-section .desc-text {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #fff;
+  max-width: 750px;
+}
+</style>

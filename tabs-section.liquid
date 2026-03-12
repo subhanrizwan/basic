@@ -1,0 +1,257 @@
+<section class="pro-tabs-section">
+  <div class="pro-tabs-wrapper">
+
+    <!-- LEFT CONTENT -->
+    <div class="pro-tab-content-area">
+      {% for block in section.blocks %}
+      <div 
+        id="tab{{ block.id }}" 
+        class="pro-tab-panel {% if forloop.first %}active{% endif %}"
+        style="background-image:url('{{ block.settings.bg_image | image_url }}');"
+      >
+        <div class="pro-tab-inner">
+          <h2>{{ block.settings.title }}</h2>
+          <p>{{ block.settings.description }}</p>
+
+          {% if block.settings.button_text != blank %}
+          <a href="{{ block.settings.button_url }}" class="pro-learn-btn">
+            {{ block.settings.button_text }}
+          </a>
+          {% endif %}
+
+          {% if block.settings.image != blank %}
+          <img 
+            src="{{ block.settings.image | image_url}}" 
+            class="pro-tab-img" 
+            alt="" width="100%" height="100%">
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- RIGHT VERTICAL TABS -->
+    <div class="pro-tabs-right">
+      {% for block in section.blocks %}
+      <button 
+        class="pro-tab-btn pro-tab-{{ forloop.index }} {% if forloop.first %}active{% endif %}" 
+        data-tab="tab{{ block.id }}"
+      >
+        <span class="pro-tab-title">{{ block.settings.title }}</span>
+      </button>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Professional Tabs Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab_item",
+      "name": "Tab Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Title",
+          "default": "Specification Support"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Inner Image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Professional Tabs Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+
+    /* tabs */
+.pro-tabs-section {
+  padding: 0;
+}
+
+.pro-tabs-wrapper {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #dcdcdc;
+  background: #f2f2f2;
+}
+
+/* LEFT CONTENT AREA */
+.pro-tab-content-area {
+  width: 75%;
+  position: relative;
+}
+
+.pro-tab-panel {
+  display: none;
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  min-height: 520px;
+  position: relative;
+}
+
+.pro-tab-panel.active {
+  display: block;
+}
+
+.pro-tab-inner h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.pro-tab-inner p {
+  max-width: 580px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.pro-learn-btn {
+  margin-top: 18px;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #c69c6d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.pro-tab-img {
+  margin-top: 20px;
+  width: 350px;
+  border-radius: 4px;
+}
+
+/* RIGHT TABS */
+.pro-tabs-right {
+  width: 25%;
+  background: #f8f8f8;
+  border-left: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: column;
+}
+
+.pro-tab-btn {
+  padding: 40px 10px;
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid #ececec;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* ROTATED TEXT LIKE IMAGE */
+.pro-tab-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-transform: none;
+  color: #3c3c3c;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.pro-tab-btn.active {
+  background: #e6eceb;
+}
+
+/* Unique classes for icons (::before to be added later) */
+.pro-tab-1::before,
+.pro-tab-2::before,
+.pro-tab-3::before,
+.pro-tab-4::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0 auto 10px auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pro-tabs-wrapper {
+    flex-direction: column;
+  }
+  .pro-tabs-right {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .pro-tab-btn {
+    flex: 1;
+    white-space: nowrap;
+    padding: 20px 0;
+  }
+  .pro-tab-title {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+  .pro-tab-content-area {
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const buttons = document.querySelectorAll(".pro-tab-btn");
+  const panels = document.querySelectorAll(".pro-tab-panel");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", function() {
+
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const target = btn.getAttribute("data-tab");
+
+      panels.forEach(panel => {
+        panel.classList.remove("active");
+        if (panel.id === target) {
+          panel.classList.add("active");
+        }
+      });
+
+    });
+  });
+});
+</script>
