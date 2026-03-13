@@ -1,0 +1,278 @@
+<section class="accordion-tabs-section">
+
+<div class="accordion">
+
+{% for block in section.blocks %}
+<div class="tab {% if forloop.first %}active{% endif %}">
+
+  <div class="content" style="background-image:url({{ block.settings.bg_image | image_url: width: 1500 }});">
+
+    <div class="verticle-col">
+      <img src="{{ block.settings.icon | image_url: width: 24 }}" alt="" width="24px" height="24px">
+      <h3>{{ block.settings.vertical_title }}</h3>
+    </div>
+
+    <div class="content-inner">
+
+      <div class="wrap">
+        <h2>{{ block.settings.title }}</h2>
+        <p>{{ block.settings.text }}</p>
+
+        {% if block.settings.button_text != blank %}
+        <a href="{{ block.settings.button_link }}" class="btn">
+          {{ block.settings.button_text }}
+        </a>
+        {% endif %}
+      </div>
+
+      {% if block.settings.image != blank %}
+      <img src="{{ block.settings.image | image_url }}" alt="" width="100%" height="100%">
+      {% endif %}
+
+    </div>
+
+  </div>
+
+  <div class="tab-label">
+    {{ block.settings.label }}
+  </div>
+
+</div>
+{% endfor %}
+
+</div>
+
+</section>
+
+<style>
+.accordion-tabs-section{
+padding:40px 20px;
+}
+
+.accordion{
+display:flex;
+width:100%;
+max-width:1200px;
+margin:auto;
+overflow:hidden;
+border-radius:6px;
+}
+
+.tab{
+display:flex;
+height:100%;
+transition:all .5s ease;
+}
+
+.tab:not(.active){
+width:70px;
+}
+
+.tab.active{
+width:100%;
+}
+
+.tab-label{
+writing-mode:vertical-rl;
+transform:rotate(180deg);
+background:#e6e6e6;
+padding:20px 10px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-weight:600;
+letter-spacing:1px;
+min-width:70px;
+}
+
+.content{
+background-size:cover;
+background-position:center;
+color:white;
+overflow:hidden;
+width:0;
+transition:width .5s ease;
+display:flex;
+align-items:center;
+}
+
+.tab.active .content{
+width:100%;
+}
+
+.verticle-col{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+gap:10px;
+}
+
+.verticle-col h3{
+writing-mode:vertical-rl;
+transform:rotate(180deg);
+   font-size: 36px;
+    line-height: 46px;
+    letter-spacing: -1%;
+    color: #fff;
+    font-family: 'EB Garamond';
+    font-style: italic;
+    font-weight: 500;
+}
+
+.content-inner {
+    padding: 40px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+.content h2 {
+    font-size: 52px;
+    line-height: 62px;
+    letter-spacing: -1%;
+    color: #ffff;
+    font-weight: 500;
+}
+
+.content p {
+    font-size: 16px;
+    line-height: 25px;
+    margin: 15px 0;
+    font-weight: 400;
+}
+
+.accordion-tabs-section .content .btn {
+    background: #8A5B3C;
+    border: none;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.content img{
+
+border-radius:6px;
+}
+
+@media(max-width:900px){
+
+.accordion{
+flex-direction:column;
+height:auto;
+}
+
+.tab{
+flex-direction:column;
+width:100% !important;
+}
+
+.tab-label{
+writing-mode:horizontal-tb;
+transform:none;
+}
+
+.content{
+width:100% !important;
+}
+
+</style>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const tabs=document.querySelectorAll(".tab");
+
+tabs.forEach(tab=>{
+
+const label=tab.querySelector(".tab-label");
+
+label.addEventListener("click",()=>{
+
+tabs.forEach(t=>t.classList.remove("active"));
+
+tab.classList.add("active");
+
+});
+
+});
+
+});
+
+</script>
+
+{% schema %}
+{
+"name": "Accordion Tabs",
+"settings": [],
+"blocks": [
+{
+"type": "tab",
+"name": "Tab Item",
+"settings": [
+{
+"type": "text",
+"id": "label",
+"label": "Tab Label",
+"default": "Specification Support"
+},
+{
+"type": "text",
+"id": "vertical_title",
+"label": "Vertical Title",
+"default": "Specification Support"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Content Title",
+"default": "Specification Support"
+},
+{
+"type": "textarea",
+"id": "text",
+"label": "Content Text",
+"default": "Specification Support provides technical services."
+},
+{
+"type": "image_picker",
+"id": "icon",
+"label": "Icon"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Content Image"
+},
+{
+"type": "image_picker",
+"id": "bg_image",
+"label": "Background Image"
+},
+{
+"type": "text",
+"id": "button_text",
+"label": "Button Text",
+"default": "Learn More"
+},
+{
+"type": "url",
+"id": "button_link",
+"label": "Button Link"
+}
+]
+}
+],
+"presets":[
+{
+"name":"Accordion Tabs"
+}
+]
+}
+{% endschema %}

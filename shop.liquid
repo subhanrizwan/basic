@@ -1,0 +1,168 @@
+<section class="shop-section shop-banner" style="background-image:url({{ section.settings.bg_img | image_url }});">
+    <div class="container">
+        <div class="row">
+            <div class="col left-col">
+                <h2>{{ section.settings.shop_heading }}</h2>
+                <p>{{ section.settings.shop_desc }}</p>
+                <div class="support-service-btn">
+                    <a href="{{ section.settings.primary_link }}" class="btn1">{{ section.settings.primary_text }}</a>
+                </div>
+            </div>
+            <div class="col right-col">
+                <div class="shop-categories">
+                    {% for block in section.blocks %}
+                    <div class="shop-category">
+                        <div class="cat-img">
+                            <img src="{{ block.settings.cat_img | image_url }}" alt="{{ block.settings.cat_title }}">
+                            <h5>{{ block.settings.cat_title }}</h5>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "shop banner",
+"settings": [
+{
+"type": "image_picker",
+"id": "bg_img",
+"label": "Bg Image"
+},
+{
+"type": "text",
+"id": "shop_heading",
+"label": "Shop Heading",
+"default": "Connecting Design, Products & Performance"
+},
+{
+"type": "textarea",
+"id": "shop_desc",
+"label": "Shop Description",
+"default": "Connecting Design, Products & Performance"
+},
+{
+"type": "text",
+"id": "primary_text",
+"label": "Primary Button Text",
+"default": "Specification & Product Support"
+},
+{
+"type": "url",
+"id": "primary_link",
+"label": "Primary Button Link"
+}
+],
+"blocks": [
+  {
+    "type": "category",
+    "name": "Shop Category",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "cat_img",
+        "label": "Category Image"
+      },
+      {
+        "type": "text",
+        "id": "cat_title",
+        "label": "Category Title",
+        "default": "Lighting"
+      }
+    ]
+  }
+],
+"max_blocks": 9,
+"presets": [
+{
+"name": "Shop Banner",
+"category": "Custom Shop"
+}
+]
+
+}
+{% endschema %}
+
+
+<style>
+    .shop-section {
+        padding: 50px 20px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .shop-section .row {
+        display: flex;
+        justify-content: center;
+        column-gap: 50px;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .shop-section .col.left-col {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        justify-content: flex-end;
+        padding-bottom: 15px;
+        width: 50%;
+    }
+
+    .shop-section .col.right-col {
+        width: 50%;
+    }
+
+    .shop-section .col.right-col img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .shop-section .left-col h2 {
+        font-size: 72px;
+        line-height: 80px;
+        font-weight: 400;
+        color: #fff;
+        font-style: normal;
+        letter-spacing: -1%;
+    }
+
+    .shop-section .left-col p {
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+        color: #fff;
+    }
+
+    .support-service-btn {
+        display: flex;
+        column-gap: 20px;
+    }
+
+    .shop-section .btn1 {
+        font-size: 16px;
+        line-height: 26px;
+        background: #667F81;
+        padding: 12px 25px;
+        border-radius: 6px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .shop-section .btn2 {
+        font-size: 16px;
+        line-height: 26px;
+        background: #fff;
+        padding: 12px 25px;
+        border-radius: 6px;
+        color: #000;
+        text-decoration: none;
+        font-weight: 500;
+    }
+</style>
